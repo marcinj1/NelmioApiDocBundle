@@ -117,9 +117,9 @@ final class FormModelDescriber implements ModelDescriberInterface, ModelRegistry
                     $subType = $config->getOption('entry_type');
                     $property->setType('array');
 
-                    $model = new Model(new Type(Type::BUILTIN_TYPE_OBJECT, false, $subType), null);
+                    $model = new Model(new Type(Type::BUILTIN_TYPE_OBJECT, false, $subType, true), null);
+                    $property->getItems()->setType('array');
                     $property->getItems()->setRef($this->modelRegistry->register($model));
-                    $property->setExample(sprintf('[{%s}]', $subType));
 
                     break;
                 }
